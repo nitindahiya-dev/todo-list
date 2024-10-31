@@ -1,13 +1,13 @@
-// src/main.rs
-use actix_web::{get, post, web, App, HttpResponse, HttpServer, Responder};
-use actix_cors::Cors; // Import the Cors module
+use actix_web::{get, post, web, App, HttpServer, Responder, HttpResponse};
+use actix_cors::Cors;
 use std::sync::Mutex;
 mod addtodo;
-use addtodo::TodoList;
+mod removetodo;
+mod edittodo;
 
-struct AppState {
-    todo_list: Mutex<TodoList>,
-}
+use addtodo::{AppState, TodoList};
+use removetodo::remove_todo;
+use edittodo::edit_todo;
 
 #[get("/todos")]
 async fn get_todos(data: web::Data<AppState>) -> impl Responder {
@@ -36,12 +36,14 @@ async fn main() -> std::io::Result<()> {
             .app_data(app_state.clone())
             .wrap(
                 Cors::default()
-                    .allow_any_origin() // Allow any origin (for development)
-                    .allowed_methods(vec!["GET", "POST"]) // Allow GET and POST methods
-                    .allowed_headers(vec!["Content-Type"]), // Allow Content-Type header
+                    .allow_any_origin()
+                    .allowed_methods(vec!["GET", "POST", "DELETE", "PUT"])
+                    .allowed_headers(vec!["Content-Type"]),
             )
             .service(get_todos)
             .service(add_todo)
+            .service(remove_todo)
+            .service(edit_todo)
     })
     .bind("127.0.0.1:8080")?
     .run()

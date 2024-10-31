@@ -19,3 +19,24 @@ body {
   background: var(--background);
   font-family: Arial, Helvetica, sans-serif;
 }
+
+
+
+.react-responsive-modal-modal{
+  background: black !important;
+  border: 3px dashed white;
+  border-radius: 8px;
+}
+
+.react-responsive-modal-closeButton {
+  top: 10px !important;
+  right: 10px !important;
+}
+
+.react-responsive-modal-closeButton svg{
+  fill: white;
+}
+
+.react-responsive-modal-container{
+  overflow-y: hidden !important;
+}
