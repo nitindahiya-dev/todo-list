@@ -1,9 +1,16 @@
 use actix_web::{get, post, web, App, HttpServer, Responder, HttpResponse};
 use actix_cors::Cors;
 use std::sync::Mutex;
+
 mod addtodo;
 mod removetodo;
 mod edittodo;
+
+#[macro_use]
+extern crate diesel;
+
+pub mod schema;
+pub mod models;
 
 use addtodo::{AppState, TodoList};
 use removetodo::remove_todo;

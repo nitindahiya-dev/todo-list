@@ -170,7 +170,7 @@ const Todo = () => {
                                 type="text"
                                 value={editValue}
                                 onChange={(e) => setEditValue(e.target.value)}
-                                className="border-b-2 border-teal-500 bg-transparent text-white placeholder:text-white w-full text-lg py-1"
+                                className="border-b-2 border-teal-500 bg-transparent text-white placeholder:text-white w-full text-lg py-1 font-bold placeholder:font-bold border-none mr-3 px-2 leading-tight focus:outline-none"
                                 placeholder="Edit your task"
                             />
                             <div className="flex justify-center space-x-4 mt-6">

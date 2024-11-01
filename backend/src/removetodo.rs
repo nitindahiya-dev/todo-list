@@ -1,7 +1,5 @@
-// src/removetodo.rs
 use actix_web::{delete, web, HttpResponse, Responder};
-
-use crate::addtodo::AppState; // Import AppState and TodoList
+use crate::addtodo::AppState;
 
 #[delete("/remove_todo")]
 pub async fn remove_todo(
